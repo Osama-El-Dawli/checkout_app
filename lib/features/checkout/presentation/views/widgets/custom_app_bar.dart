@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
-AppBar customAppBar({required final String title}) {
+AppBar customAppBar({final String? title, final void Function()? onTap}) {
   return AppBar(
     backgroundColor: Colors.transparent,
     centerTitle: true,
     elevation: 0,
     leading: Center(
-      child: SvgPicture.asset('assets/images/arrow.svg'),
+      child: GestureDetector(
+        onTap: onTap,
+        child: SvgPicture.asset('assets/images/arrow.svg'),
+      ),
     ),
     title: Text(
-      title,
+      title ?? '',
       style: const TextStyle(
         color: Colors.black,
         fontSize: 25,
